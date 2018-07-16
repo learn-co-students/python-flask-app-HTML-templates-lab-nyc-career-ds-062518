@@ -2,7 +2,7 @@
 # Python - Getting Started with Flask
 
 ## Introduction
-In this lab we are going to continue building out a Flask app. This time we are going to explore returning HTML instead of just simple text. We'll use HTML to help us make our web page look a bit more organized and stylized. Then we'll go a step further and create templates for our HTML pages. This will help make our program more reusable and flow a bit cleaner by separating our concerns. This will become clearer as we start building, so let's get started! 
+In this lab we are going to continue building out a Flask app. This time we are going to explore returning HTML instead of just simple text. We'll use HTML to help us make our web page look a bit more organized and stylized. Then we'll go a step further and create templates for our HTML pages. This will help make our program more reusable and flow a bit cleaner by separating our concerns. This will become clearer as we start building, so let's get started!
 
 ## Objectives
 * Define routes that return HTML
@@ -11,7 +11,7 @@ In this lab we are going to continue building out a Flask app. This time we are 
 * Create HTML templates that use information from params
 
 ## Getting Started
-Okay, our first step is to set up our Flask app and define some routes in our `app.py` file. 
+Okay, our first step is to set up our Flask app and define some routes in our `app.py` file.
 
 The first route we want to define is the root route, or index, or home. It's the first route you are taken to for any website -- `"/"`. If we don't define this route then we will get the dreaded `404 error`. So, let's define this route and have it return an `h1` tag that reads `"Welcome to my flask app"` and a `p` tag that reads `"be careful, it's still under construction..."`.
 
@@ -34,7 +34,7 @@ def login():
 ## Making Dynamic HTML
 Alright, great! We have our index page showing our welcome message. Now, what if we wanted everyone who visited our web app to have their own profile? For example, if we wanted to see a page with our friend Mary's name on it, how could we do this?
 
-Well we could start by defining a route for Mary specifically. Let's do that. Define a route, `"/profile/mary"` and have it return an `h1` tag that reads `"Welcome to Mary's profile"`. 
+Well we could start by defining a route for Mary specifically. Let's do that. Define a route, `"/profile/mary"` and have it return an `h1` tag that reads `"Welcome to Mary's profile"`.
 
 Once we have a route that takes us to Mary's profile, we need to create 4 more for our other friends Jeff, Becca, John, and Kathleen. Seems like this would be a lot more work than it should be, right? Could we maybe make this process a bit more dynamic? Yes! If we change our route from `"/profile/mary"` to `"/profile/<name>"` and we have our method underneath this route take an argument of `name`, which is being passed by our route, we can make it this route a lot more dynamic. Now if we go to `"/profile/john"` in our browser our app will assign the <name> variable to `"john"` and when we interpolate our `name` argument it will show John's name on the page. Try it out!
 
@@ -74,7 +74,7 @@ from flask import Flask, render_template
 Then we can use render template like we do below:
 
 ```python
-def hello_world_template()
+def hello_world_template():
     return render_template('hello_world.html')
 ```
 
@@ -86,11 +86,11 @@ Keep in mind, since we are no longer returning a string from our function (i.e. 
 
 Awesome! Now when we go to the hello-world-template route we see our new `h1` tag with our updated text.
 
-This is great. We can now separate our HTML and our routes, which feels like a step in the right direction if we think about having to scale our application into something larger. 
+This is great. We can now separate our HTML and our routes, which feels like a step in the right direction if we think about having to scale our application into something larger.
 
 ## More Dynamic Templates
 
-What about our dynamic routes though? We really need to separate our profile HTML but we also need to make sure we can get our params (or data from our route) so we can personalize the profiles. 
+What about our dynamic routes though? We really need to separate our profile HTML but we also need to make sure we can get our params (or data from our route) so we can personalize the profiles.
 
 Luckily, this is not as difficult as it might seem. We can pass our params to the render_template function like we do with the name of the template.
 
@@ -105,7 +105,7 @@ This makes our name, age, favorite_hobby, and hometown variables available to ou
 
 ```python
 render_template('profile.html', name=name)
-``` 
+```
 
 and my template would then look something like this:
 
@@ -117,4 +117,4 @@ So, where we were interpolating our params in our string of HTML will need to be
 
 ## Summary
 
-Great work! In this lab we used Flask to create different routes and return some more dynamic HTML. Once our application started to get a bit more complex we decided to use the render_template function from Flask so that we separate our routing logic from our HTML. We then updated our template to receive variables and interpolate them in our HTML using the double curly braces. Our Flask apps are looking better and better! 
+Great work! In this lab we used Flask to create different routes and return some more dynamic HTML. Once our application started to get a bit more complex we decided to use the render_template function from Flask so that we separate our routing logic from our HTML. We then updated our template to receive variables and interpolate them in our HTML using the double curly braces. Our Flask apps are looking better and better!
